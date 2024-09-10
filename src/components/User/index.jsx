@@ -1,4 +1,5 @@
 import "./User.scss";
+import icon from "../../img/icon.svg";
 
 const User = (props) => {
   return (
@@ -9,22 +10,28 @@ const User = (props) => {
         </div>
         <div className="user-main">
           <h2 className="user-name">{props.name}</h2>
-          <p className="user-email">{props.email}</p>
+          <p className="user-text">{props.email}</p>
         </div>
-        <button className="follow-button">D</button>
+        <a className="delete-button" href="#">
+          <img
+            src={icon}
+            alt="Delete"
+            style={{ width: "24px", height: "24px" }}
+          />
+        </a>
       </div>
       <div className="user-info">
         <div className="user-info__row">
           <p className="subtitle">Phone No</p>
-          <p className="user-phone">{props.phone}</p>
+          <p className="user-text">{props.phone}</p>
         </div>
         <div className="user-info__row">
           <p className="subtitle">Birthday</p>
-          <p className="user-location">{props.dobdate}</p>
+          <p className="user-text">{props.dobdate}</p>
         </div>
         <div className="user-info__row">
           <p className="subtitle">Address</p>
-          <p className="user-location">{props.location}</p>
+          <p className="user-text">{props.location}</p>
         </div>
       </div>
     </div>
