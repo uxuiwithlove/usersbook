@@ -5,6 +5,7 @@ import "./Users.scss";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  // отсюда делать удаление карточки
 
   // Функция для получения данных пользователей
   const getUsers = async () => {
@@ -24,19 +25,28 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Users</h1>
-      {users.map((user, index) => (
-        <User
-          key={index}
-          name={`${user.name.first} ${user.name.last}`}
-          email={user.email}
-          phone={user.phone}
-          picture={user.picture.medium}
-          dobdate={user.dob.date}
-          location={`${user.location.city}, ${user.location.country}`}
+    <div>
+      <div className="controls">
+        <input
+          type="text"
+          placeholder="Search users..."
+          className="search-input"
         />
-      ))}
+        <button className="refresh-button">Refresh Users</button>
+      </div>
+      <div className="container">
+        {users.map((user, index) => (
+          <User
+            key={index}
+            name={`${user.name.first} ${user.name.last}`}
+            email={user.email}
+            phone={user.phone}
+            picture={user.picture.medium}
+            dobdate={user.dob.date}
+            location={`${user.location.city}, ${user.location.country}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
