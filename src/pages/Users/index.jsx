@@ -38,7 +38,6 @@ const Users = () => {
     const location =
       `${user.location.city}, ${user.location.country}`.toLowerCase();
 
-    // Проверяем, содержит ли любое из полей введенный поисковый запрос
     return (
       fullName.includes(searchTerm) ||
       email.includes(searchTerm) ||
@@ -46,6 +45,40 @@ const Users = () => {
       dobdate.includes(searchTerm) ||
       location.includes(searchTerm)
     );
+  });
+
+  // Подсчет статистики по возрастным группам и гендеру
+  const ageGroups = {
+    "11-20": 0,
+    "21-30": 0,
+    "31-40": 0,
+    "41-50": 0,
+    "50+": 0,
+  };
+  let maleCount = 0;
+  let femaleCount = 0;
+
+  filteredUsers.forEach((user) => {
+    const birthDate = new Date(user.dob.date);
+    const age = new Date().getFullYear() - birthDate.getFullYear();
+
+    if (age >= 11 && age <= 20) {
+      ageGroups["11-20"]++;
+    } else if (age >= 21 && age <= 30) {
+      ageGroups["21-30"]++;
+    } else if (age >= 31 && age <= 40) {
+      ageGroups["31-40"]++;
+    } else if (age >= 41 && age <= 50) {
+      ageGroups["41-50"]++;
+    } else if (age > 50) {
+      ageGroups["50+"]++;
+    }
+
+    if (user.gender === "male") {
+      maleCount++;
+    } else if (user.gender === "female") {
+      femaleCount++;
+    }
   });
 
   // Запрос выполняется при монтировании компонента
@@ -68,18 +101,53 @@ const Users = () => {
         </button>
       </div>
       <div className="container">
-        {filteredUsers.map((user, index) => (
-          <User
-            key={index}
-            name={`${user.name.first} ${user.name.last}`}
-            email={user.email}
-            phone={user.phone}
-            picture={user.picture.medium}
-            dobdate={new Date(user.dob.date).toLocaleDateString()}
-            location={`${user.location.city}, ${user.location.country}`}
-            onDelete={handleDeleteUser} // Передаем функцию удаления
-          />
-        ))}
+        <div className="info-panel">
+          <h2 className="user-name">{filteredUsers.length} Users</h2>
+          <h3 className="group-title">Age groups</h3>
+          <div className="user-info__row">
+            <p className="subtitle">11 to 20</p>
+            <span className="user-text">{ageGroups["11-20"]} users</span>
+          </div>
+          <div className="user-info__row">
+            <p className="subtitle">21 to 30</p>
+            <span className="user-text">{ageGroups["21-30"]} users</span>
+          </div>
+          <div className="user-info__row">
+            <p className="subtitle">31 to 40</p>
+            <span className="user-text">{ageGroups["31-40"]} users</span>
+          </div>
+          <div className="user-info__row">
+            <p className="subtitle">41 to 50</p>
+            <span className="user-text">{ageGroups["41-50"]} users</span>
+          </div>
+          <div className="user-info__row">
+            <p className="subtitle">50+</p>
+            <span className="user-text">{ageGroups["50+"]} users</span>
+          </div>
+          <h3 className="group-title">Gender groups</h3>
+          <div className="user-info__row">
+            <p className="subtitle">Male</p>
+            <span className="user-text">{maleCount} users</span>
+          </div>
+          <div className="user-info__row">
+            <p className="subtitle">Female</p>
+            <span className="user-text">{femaleCount} users</span>
+          </div>
+        </div>
+        <div className="cards-container">
+          {filteredUsers.map((user, index) => (
+            <User
+              key={index}
+              name={`${user.name.first} ${user.name.last}`}
+              email={user.email}
+              phone={user.phone}
+              picture={user.picture.medium}
+              dobdate={new Date(user.dob.date).toLocaleDateString()}
+              location={`${user.location.city}, ${user.location.country}`}
+              onDelete={handleDeleteUser} // Передаем функцию удаления
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

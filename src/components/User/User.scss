@@ -1,20 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap");
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Jura", sans-serif;
-  background-color: #12141b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // height: 100vh; иначе едет верстка вверх
-}
-
 .user-card {
   position: relative;
   background-color: #1a1c23;
@@ -96,9 +79,4 @@ body {
 
 .follow-button:hover {
   background-color: #2980b9;
-}
-
-.container {
-  display: flex;
-  gap: 24px;
 }
