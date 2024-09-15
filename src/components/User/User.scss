@@ -27,6 +27,10 @@ body {
   padding: 20px;
 }
 
+.user-card:hover {
+  border: 1px solid #cf7b5a33;
+}
+
 .user-card:hover h2 {
   color: #cf7b5a;
 }

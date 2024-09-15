@@ -32,7 +32,9 @@ const Users = () => {
           placeholder="Search users..."
           className="search-input"
         />
-        <button className="refresh-button">Refresh Users</button>
+        <button onClick={getUsers} className="refresh-button">
+          Refresh Users
+        </button>
       </div>
       <div className="container">
         {users.map((user, index) => (

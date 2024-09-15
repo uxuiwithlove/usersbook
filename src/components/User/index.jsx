@@ -1,6 +1,8 @@
 import "./User.scss";
 import icon from "../../img/icon.svg";
 
+const onDelete = () => {};
+
 const User = (props) => {
   return (
     <div className="user-card">
@@ -12,7 +14,7 @@ const User = (props) => {
           <h2 className="user-name">{props.name}</h2>
           <p className="user-text">{props.email}</p>
         </div>
-        <a className="delete-button" href="#">
+        <a onClick={onDelete} className="delete-button" href="#">
           <img
             src={icon}
             alt="Delete"
