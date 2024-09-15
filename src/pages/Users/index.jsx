@@ -5,7 +5,6 @@ import "./Users.scss";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  // отсюда делать удаление карточки
 
   // Функция для получения данных пользователей
   const getUsers = async () => {
@@ -17,6 +16,11 @@ const Users = () => {
     } catch (error) {
       console.error("Ошибка при получении данных:", error);
     }
+  };
+
+  // Функция для удаления пользователя
+  const handleDeleteUser = (email) => {
+    setUsers((prevUsers) => prevUsers.filter((user) => user.email !== email));
   };
 
   // Запрос выполняется при монтировании компонента
@@ -46,6 +50,7 @@ const Users = () => {
             picture={user.picture.medium}
             dobdate={user.dob.date}
             location={`${user.location.city}, ${user.location.country}`}
+            onDelete={handleDeleteUser} // Передаем функцию удаления
           />
         ))}
       </div>
