@@ -101,37 +101,39 @@ const Users = () => {
         </button>
       </div>
       <div className="container">
-        <div className="info-panel">
-          <h2 className="user-name">{filteredUsers.length} Users</h2>
-          <h3 className="group-title">Age groups</h3>
-          <div className="user-info__row">
-            <p className="subtitle">11 to 20</p>
-            <span className="user-text">{ageGroups["11-20"]} users</span>
-          </div>
-          <div className="user-info__row">
-            <p className="subtitle">21 to 30</p>
-            <span className="user-text">{ageGroups["21-30"]} users</span>
-          </div>
-          <div className="user-info__row">
-            <p className="subtitle">31 to 40</p>
-            <span className="user-text">{ageGroups["31-40"]} users</span>
-          </div>
-          <div className="user-info__row">
-            <p className="subtitle">41 to 50</p>
-            <span className="user-text">{ageGroups["41-50"]} users</span>
-          </div>
-          <div className="user-info__row">
-            <p className="subtitle">50+</p>
-            <span className="user-text">{ageGroups["50+"]} users</span>
-          </div>
-          <h3 className="group-title">Gender groups</h3>
-          <div className="user-info__row">
-            <p className="subtitle">Male</p>
-            <span className="user-text">{maleCount} users</span>
-          </div>
-          <div className="user-info__row">
-            <p className="subtitle">Female</p>
-            <span className="user-text">{femaleCount} users</span>
+        <div className="wrapper">
+          <div className="info-panel">
+            <h2 className="user-name">{filteredUsers.length} Users</h2>
+            <h3 className="group-title">Age groups</h3>
+            <div className="user-info__row">
+              <p className="subtitle">11 to 20</p>
+              <span className="user-text">{ageGroups["11-20"]} users</span>
+            </div>
+            <div className="user-info__row">
+              <p className="subtitle">21 to 30</p>
+              <span className="user-text">{ageGroups["21-30"]} users</span>
+            </div>
+            <div className="user-info__row">
+              <p className="subtitle">31 to 40</p>
+              <span className="user-text">{ageGroups["31-40"]} users</span>
+            </div>
+            <div className="user-info__row">
+              <p className="subtitle">41 to 50</p>
+              <span className="user-text">{ageGroups["41-50"]} users</span>
+            </div>
+            <div className="user-info__row">
+              <p className="subtitle">50+</p>
+              <span className="user-text">{ageGroups["50+"]} users</span>
+            </div>
+            <h3 className="group-title">Gender groups</h3>
+            <div className="user-info__row">
+              <p className="subtitle">Male</p>
+              <span className="user-text">{maleCount} users</span>
+            </div>
+            <div className="user-info__row">
+              <p className="subtitle">Female</p>
+              <span className="user-text">{femaleCount} users</span>
+            </div>
           </div>
         </div>
         <div className="cards-container">
